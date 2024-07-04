@@ -1,0 +1,20 @@
+<app-header titulo="Administrar Lugares">
+</app-header>
+<ion-content>
+  
+  <ion-list>
+    <ion-list-header>
+      <ion-label color="primary">Lugares registrados</ion-label>
+      <ion-button (click)="abrirFormUsuario('')" fill="outline"><ion-icon
+          name="add-circle-sharp"></ion-icon></ion-button>
+    </ion-list-header>
+
+    <div *ngFor="let lug of listaLugares" (click)="presentActionSheet(lug)">
+      <app-card-lugar [lugar]="lug">
+
+      </app-card-lugar>
+      <br>
+    </div>
+
+  </ion-list>
+</ion-content>

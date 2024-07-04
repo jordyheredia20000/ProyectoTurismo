@@ -1,0 +1,14 @@
+<ion-card>
+ <div style="background-color: black; display: flex;align-items: center;justify-content: center;">
+  <img height="400px" [alt]="imagenes[0].descripcion" [src]="imagenes[0].path"/>
+ </div>
+  <ion-card-header>
+    <ion-card-title>{{lugar.nombre}}</ion-card-title>
+    <ion-card-subtitle>{{lugar.pais}} - {{lugar.provincia}} - {{lugar.ciudad}}</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+   <p>{{lugar.descripcion}}</p><br>
+   <p>Direccion: {{lugar.direccion}}</p>
+  </ion-card-content>
+</ion-card>

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{titulo}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding: 20px; display: flex; flex-direction: column;">
+
+    <label>Nombre Completo</label>
+    <ion-input [(ngModel)]="itemData.nombre_Completo"></ion-input>
+
+
+    <label>Correo</label>
+    <ion-input [(ngModel)]="itemData.correo"></ion-input>
+
+
+    <label>Contraseña</label>
+    <ion-input type="password" [(ngModel)]="itemData.pass"></ion-input>
+
+    <label>Confirmar Contraseña</label>
+    <ion-input type="password" [(ngModel)]="pass"></ion-input>
+
+    <div *ngIf="itemToEdit">
+      <label>Rol</label>
+      <ion-select [(ngModel)]="itemData.id_rol">
+        <ion-select-option *ngFor="let rol of roles" [value]="rol.id">{{rol.nombre}}</ion-select-option>
+      </ion-select>
+    </div>
+
+    <label style="padding-bottom: 20px;">Fecha Nacimiento</label>
+    <ion-datetime-button datetime="datetime"></ion-datetime-button>
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime id="datetime" [(ngModel)]="itemData.fecha_nacimiento"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+
+  </div>
+  <div style="display: flex;justify-content: center;">
+    <ion-button (click)="saveItem()" fill="outline">Guardar</ion-button>
+    <ion-button (click)="cancel()" fill="outline" color="danger">Cancelar</ion-button>
+  </div>
+</ion-content>

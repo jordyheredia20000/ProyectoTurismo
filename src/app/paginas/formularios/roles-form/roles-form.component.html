@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{titulo}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding: 20px; display: flex; flex-direction: column;">
+
+    <label>Nombre Completo</label>
+    <ion-input [(ngModel)]="itemData.nombre"></ion-input>
+    <label >Asignar permiso:</label>
+    <ion-select [(ngModel)]="permiso">
+      <ion-select-option  *ngFor="let pero of permisosDisponibles" [value]="pero">
+        {{pero.id}}: {{pero.nombre}}
+      </ion-select-option >
+    </ion-select>
+
+    <br>
+        
+    <div style="display: flex; justify-content: end;">
+      <ion-icon name="add-circle" size="large" (click)="agregarPermiso()"></ion-icon>
+    </div>
+
+    <ion-list>
+      <ion-item *ngFor="let per of permisos" (click)="eliminarPermiso(per)">
+        {{per.id}}: {{per.nombre}}
+      </ion-item>
+    </ion-list>
+  </div>
+  <div style="display: flex;justify-content: center;">
+    <ion-button (click)="saveItem()" fill="outline">Guardar</ion-button>
+    <ion-button (click)="cancel()" fill="outline" color="danger">Cancelar</ion-button>
+  </div>
+</ion-content>

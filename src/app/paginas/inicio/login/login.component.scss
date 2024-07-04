@@ -1,0 +1,22 @@
+#contenido{
+    margin: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    min-width: 300px;
+    max-width: 300px;
+}
+#principal{
+    background-color: blue;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ion-button{
+    margin-top: 20px;
+}
+
+label{
+    margin-top: 20px;
+}

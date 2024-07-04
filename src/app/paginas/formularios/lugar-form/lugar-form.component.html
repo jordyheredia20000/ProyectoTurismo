@@ -1,0 +1,206 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{editando?"Editando Lugar":"Creando Lugar"}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="display: flex; flex-direction: column;">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Datos del Lugar</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <label>Nombre Completo</label>
+        <ion-input [(ngModel)]="itemData.nombre"></ion-input>
+        <br>
+        <label>Descripcion</label>
+        <ion-textarea [(ngModel)]="itemData.descripcion"></ion-textarea>
+        <br>
+        <label>Telefono</label>
+        <ion-input type="number" [(ngModel)]="itemData.telefono"></ion-input>
+        <br>
+        <label>Sitio web</label>
+        <ion-input [(ngModel)]="itemData.sitio_web"></ion-input>
+        <br>
+        <label>Capacidad Maxima</label>
+        <ion-input type="number" min="1" max="100" [(ngModel)]="itemData.capacidad_maxima"></ion-input>
+        <br>
+        <label>Pais</label>
+        <ion-select [(ngModel)]="itemData.pais">
+          <ion-select-option value="Ecuador">Ecuador</ion-select-option>
+        </ion-select>
+        <br>
+        <label>Ciudad</label>
+        <ion-select [(ngModel)]="itemData.ciudad">
+          <ion-select-option *ngFor="let ciu of ciudades" [value]="ciu">{{ciu}}</ion-select-option>
+        </ion-select>
+        <br>
+        <label>Provincia</label>
+        <ion-select [(ngModel)]="itemData.provincia">
+          <ion-select-option *ngFor="let prov of provincias" [value]="prov">{{prov}}</ion-select-option>
+        </ion-select>
+        <br>
+        <label>Direccion</label>
+        <ion-input [(ngModel)]="itemData.direccion"></ion-input>
+        <br>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Horario</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <label>Dia de apertura</label>
+        <ion-select [(ngModel)]="horario.dia_apertura">
+          <ion-select-option value="Lunes">Lunes</ion-select-option>
+          <ion-select-option value="Martes">Martes</ion-select-option>
+          <ion-select-option value="Miercoles">Miercoles</ion-select-option>
+          <ion-select-option value="Jueves">Jueves</ion-select-option>
+          <ion-select-option value="Viernes">Viernes</ion-select-option>
+          <ion-select-option value="Sabado">Sabado</ion-select-option>
+          <ion-select-option value="Domingo">Domingo</ion-select-option>
+        </ion-select>
+        <br>
+        <label>Dia de cierre</label>
+        <ion-select [(ngModel)]="horario.dia_cierre">
+          <ion-select-option value="Lunes">Lunes</ion-select-option>
+          <ion-select-option value="Martes">Martes</ion-select-option>
+          <ion-select-option value="Miercoles">Miercoles</ion-select-option>
+          <ion-select-option value="Jueves">Jueves</ion-select-option>
+          <ion-select-option value="Viernes">Viernes</ion-select-option>
+          <ion-select-option value="Sabado">Sabado</ion-select-option>
+          <ion-select-option value="Domingo">Domingo</ion-select-option>
+        </ion-select>
+        <br>
+        <label>Hora de apertura</label>
+        <ion-input type="text" [(ngModel)]="horario.hora_apertura"></ion-input>
+        <br>
+        <label>Hora de cierre</label>
+        <ion-input type="text" [(ngModel)]="horario.hora_cierre"></ion-input>
+        <br>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Tarifas</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <label>Nombre</label>
+        <ion-input type="text" [(ngModel)]="tarifa.nombre"></ion-input>
+        <br>
+        <label>Precio niño</label>
+        <ion-input type="text" [(ngModel)]="tarifa.precio_menor"></ion-input>
+        <br>
+        <label>Precio Adulto</label>
+        <ion-input type="text" [(ngModel)]="tarifa.precio_adulto"></ion-input>
+        <br>
+        <label>Periodo</label>
+        <ion-select [(ngModel)]="tarifa.id_periodo">
+          <ion-select-option *ngFor="let p of periodos" [value]="p.id">{{p.contenido}}</ion-select-option>
+        </ion-select>
+        <br>
+        <div style="display: flex; justify-content: end;">
+          <ion-icon name="save-sharp" size="large" (click)="agregarTarifa()"></ion-icon>
+          <ion-icon name="trash-sharp" size="large" (click)="eliminarTarifa()"></ion-icon>
+        </div>
+        <br>
+        <ion-list>
+          <ion-item *ngFor="let tar of tarifas" (click)="ponerTarifa(tar)">
+            <ion-icon name="checkmark-sharp"></ion-icon>
+            <ion-label>
+              {{tar.nombre}}
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Categorias</ion-card-title>
+      </ion-card-header>
+
+
+      <ion-card-content>
+        <br>
+        <label>Añadir categoria</label>
+        <ion-select [(ngModel)]="categoria">
+          <ion-select-option *ngFor="let c of categorias" [value]="c">{{c.nombre}}</ion-select-option>
+        </ion-select>
+
+        <br>
+
+        <div style="display: flex; justify-content: end;">
+          <ion-icon name="add-circle" size="large" (click)="agregarCategoria()"></ion-icon>
+        </div>
+        <br>
+        <ion-list>
+          <ion-item *ngFor="let cat of categoriasLugar" (click)="eliminarCategoria(cat)">
+            <ion-icon name="trash-sharp" size="small"></ion-icon>
+            <ion-label style="padding-left: 10px;">
+              {{cat.nombre}}
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Imagenes</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <label>Descripcion</label>
+        <ion-input type="text" [(ngModel)]="imagen.descripcion"></ion-input>
+        <br>
+        <label>Direccion web</label>
+        <ion-input type="text" [(ngModel)]="imagen.path"></ion-input>
+        <br>
+        <br>
+        <div style="display: flex; justify-content: end;">
+          <ion-icon name="save-sharp" size="large" (click)="agregarImagen()"></ion-icon>
+          <ion-icon name="trash-sharp" size="large" (click)="eliminarImagen()"></ion-icon>
+        </div>
+        <br>
+        <div *ngFor="let img of imagenes">
+          <br>
+          <div style="display: flex; align-items: center;" (click)="ponerImagen(img)">
+            <img [src]="img.path" [alt]="img.descripcion" width="30%">
+            <ion-label style="padding-left: 10px;">
+              {{img.descripcion}}
+            </ion-label>
+            <ion-icon name="checkmark-sharp"></ion-icon>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Ubicacion</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <label>Latitud</label>
+        <ion-input type="text" [(ngModel)]="itemData.latitud"></ion-input>
+        <br>
+        <label>Longitud</label>
+        <ion-input type="text" [(ngModel)]="itemData.longitud"></ion-input>
+        <br>
+        
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div style="display: flex;justify-content: center;">
+    <ion-button (click)="saveItem()" fill="outline">Guardar</ion-button>
+    <ion-button (click)="cancel()" fill="outline" color="danger">Cancelar</ion-button>
+  </div>
+</ion-content>

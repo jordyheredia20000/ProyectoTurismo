@@ -1,0 +1,14 @@
+<div id="principal">
+  <div id="contenido">
+    <ion-img
+    src="../../../../assets/icon/Mainlogo.png"
+    alt="Logo de la pagina" 
+  ></ion-img>
+    <label style="color: black;">Correo:</label>
+    <ion-input style="color: black;" [(ngModel)]="datosUsuario.username"></ion-input><br>
+    <label style="color: black;">Contraseña:</label>
+    <ion-input  style="color: black;" type="password" [(ngModel)]="datosUsuario.password"></ion-input>
+    <ion-button expand="block" size="dafaul" fill="outline" (click)="ingresar()">Ingresar</ion-button>
+    <ion-button expand="block" size="dafaul" fill="outline" (click)="presentarAlerta()">Registrarse</ion-button>
+  </div>
+</div>

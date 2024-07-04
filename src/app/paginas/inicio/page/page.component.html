@@ -1,0 +1,89 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>{{usuario.nombre_Completo}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <br>
+        <ion-item (click)="cerrarCesion();">
+          <ion-icon name="exit-outline"></ion-icon>
+          <ion-label style="padding-left: 10px;">
+          Cerrar Cesion
+          </ion-label>
+        </ion-item>
+        <br *ngIf="isAdmin" >
+        <ion-item *ngIf="isAdmin" >
+          <ion-icon name="eye-sharp"></ion-icon>
+          <ion-label style="padding-left: 10px;">
+            Vista de Usuario
+            </ion-label>
+        </ion-item>
+        <br *ngIf="isAdmin" >
+        <ion-item  *ngIf="isAdmin" (click)="irAdministrar()">
+          <ion-icon name="eye-sharp"></ion-icon>
+          <ion-label style="padding-left: 10px;">
+            Vista de Admin
+            </ion-label>
+        </ion-item>
+        <br>
+        <ion-item (click)="irAFavoritos()">
+          <ion-icon name="bookmark"></ion-icon>
+          <ion-label style="padding-left: 10px;">
+            Favoritos
+            </ion-label>
+        </ion-item>
+        <br>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title color="primary" (click)="listarLugares()">App Turismo</ion-title>
+      <ion-buttons slot="end">
+        <ion-icon name="search-circle" size="large" color="primary" routerLink="/lugares/buscar"></ion-icon>
+      </ion-buttons>
+      
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-header>
+      <ion-toolbar>
+        <ion-tabs>
+          <ion-tab-bar slot="top">
+            <ion-tab-button *ngFor="let cat of categorias" (click)="filtrarLista(cat)">
+              {{cat.nombre}}
+              <ion-icon name="arrow-down-circle"></ion-icon>
+            </ion-tab-button>
+          </ion-tab-bar>
+        </ion-tabs>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <div *ngFor="let lug of lista">
+          <app-card-lugar [lugar]="lug" (click)="cargarLugar(lug)">
+    
+          </app-card-lugar>
+          <br>
+        </div>
+    
+      </ion-list>
+    </ion-content>
+  </ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+
+    <ion-fab-button>
+      <ion-icon name="chatbox" (click)="irAChat()">
+
+      </ion-icon>
+    </ion-fab-button>
+  
+  </ion-fab>
+</div>
+

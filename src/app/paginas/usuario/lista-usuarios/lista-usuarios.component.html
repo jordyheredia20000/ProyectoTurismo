@@ -1,0 +1,17 @@
+<div>
+  <app-header titulo="Administrar Usuarios">
+  </app-header>
+  <ion-list>
+    <ion-list-header>
+      <ion-label color="primary">Usuarios registrados</ion-label>
+      <ion-button (click)="abrirFormUsuario('')" fill="outline"><ion-icon name="add-circle-sharp"></ion-icon></ion-button>
+    </ion-list-header>
+    <div *ngFor="let usu of listaUsuarios">
+      <br>
+      <ion-item (click)="presentActionSheet(usu)">
+        <p><b>{{usu.nombre_rol}}: </b>{{usu.nombre_Completo}}</p>
+      </ion-item>
+    </div>
+
+  </ion-list>
+</div>

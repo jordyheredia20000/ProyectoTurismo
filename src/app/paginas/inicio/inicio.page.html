@@ -1,0 +1,81 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>{{usuario.nombre_Completo}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <br>
+        <ion-item (click)="cerrarCesion();">
+          <ion-icon name="exit-outline"></ion-icon>
+          <ion-label style="padding-left: 10px;">
+          Cerrar Cesion
+          </ion-label>
+        </ion-item>
+        <br>
+        <ion-item >
+          <ion-icon name="eye-sharp" (click)="irInicioPage()"></ion-icon>
+          <ion-label style="padding-left: 10px;">
+            Vista de Usuario
+            </ion-label>
+        </ion-item><br>
+        <ion-item >
+          <ion-icon name="eye-sharp"></ion-icon>
+          <ion-label style="padding-left: 10px;">
+            Vista de Admin
+            </ion-label>
+        </ion-item>
+        <br>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title color="primary">Administrador</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  
+  <ion-content>
+      <ion-list>
+        <br>
+          <ion-item routerLink="/usuarios" detail>
+            <ion-icon [name]="" slot="end" color="primary"></ion-icon>
+            Usuarios
+          </ion-item>
+          <br>
+          <ion-item routerLink="/lugares" detail>
+            <ion-icon [name]="" slot="end" color="primary"></ion-icon>
+            Lugares Turisticos 
+          </ion-item>
+          <br>
+          <ion-item routerLink="/categorias" detail>
+            <ion-icon [name]="" slot="end" color="primary"></ion-icon>
+            Categorias
+          </ion-item>
+          <br>
+          <ion-item routerLink="/periodos" detail>
+            <ion-icon [name]="" slot="end" color="primary"></ion-icon>
+            Periodos
+          </ion-item>
+          <br>
+          <ion-item routerLink="/roles" detail>
+            <ion-icon [name]="" slot="end" color="primary"></ion-icon>
+            Roles
+          </ion-item>
+          <br>
+          <ion-item routerLink="/permisos" detail>
+            <ion-icon [name]="" slot="end" color="primary"></ion-icon>
+            Permisos
+          </ion-item>
+      </ion-list>
+    
+    </ion-content>
+</div>                       
+
+

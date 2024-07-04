@@ -1,0 +1,18 @@
+
+<app-header titulo="Administrar Periodos">
+</app-header>
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label color="primary">Periodos registrados</ion-label>
+      <ion-button (click)="abrirFormUsuario('')" fill="outline"><ion-icon name="add-circle-sharp"></ion-icon></ion-button>
+    </ion-list-header>
+    <div *ngFor="let usu of listaPeridos">
+      <br>
+      <ion-item (click)="presentActionSheet(usu)">
+        <p><b>{{usu.id}}: </b>{{usu.contenido}}</p>
+      </ion-item>
+    </div>
+
+  </ion-list>
+</ion-content>

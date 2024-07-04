@@ -1,0 +1,17 @@
+ion-fab {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;  
+  }
+  
+  ion-fab-button {
+    --background: #4267b2;  
+    --box-shadow: none;
+    --padding-start: 0;
+    --padding-end: 0;
+  }
+  
+  ion-icon {
+    font-size: 30px;
+    color: white;  
+  }

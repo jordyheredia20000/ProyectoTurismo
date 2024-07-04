@@ -1,0 +1,32 @@
+<div>
+  <app-header titulo="ChatBot">
+  </app-header>
+
+
+</div>
+<ion-content>
+  <div *ngFor="let mensaje of mensajes">
+    <div [className]="mensaje.tipo">
+      <div class="image">
+        <img [src]="mensaje.fotoPerfil">
+      </div>
+      <div class="content">
+        <p class="usuario" *ngIf="mensaje.usuario != ''">{{mensaje.usuario}}</p>
+        <p [innerHTML]="mensaje.texto">
+        </p>
+        <p class="fecha">{{mensaje.fecha | date:'short'}}</p>
+      </div>
+    </div>
+  </div>
+  
+ </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-item>
+      <ion-input [(ngModel)]="nuevoMensaje" (keydown)="comprobarTecla($event)" placeholder="Escribe un mensaje"></ion-input>
+      <ion-button slot="end" (click)="enviarMensaje()" >
+        <ion-icon name="send"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>

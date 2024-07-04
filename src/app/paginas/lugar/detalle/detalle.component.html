@@ -1,0 +1,103 @@
+<app-header titulo="">
+</app-header>
+<ion-content>
+
+  <ion-card>
+    <img [src]="imagenes[0].path" [alt]="imagenes[0].descripcion">
+    <ion-card-header>
+      <ion-card-title>{{lugar.nombre}}</ion-card-title>
+      <ion-card-subtitle>Lugar</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{lugar.descripcion}}
+      <br><br>
+      <p><b>Calificacion: </b>  {{calificacion}}</p>
+      <ion-icon *ngIf="!isFavorito" size="large" name="bookmark-outline" (click)="agregarFavorito()" ></ion-icon>
+      <ion-icon *ngIf="isFavorito" size="large" name="bookmark" (click)="eliminarFavorito()"></ion-icon>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Informacion:</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><b>Sitio Web: </b> {{lugar.sitio_web}}</p>
+
+      <p><b>Telefono: </b> {{lugar.telefono}}</p>
+
+      <p><b>Capacidad maxima: </b> {{lugar.capacidad_maxima}}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Categorias</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p *ngFor="let cat of categorias">{{cat.nombre}}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Horario</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+
+      <div *ngFor="let hor of horarios">
+        <p><b>Dia de apertura:</b>  {{hor.dia_apertura}}</p>
+        <p><b>Dia de Cierre:</b>  {{hor.dia_cierre}}</p>
+        <p><b>Hora de apertura:</b>  {{hor.hora_apertura}}</p>
+        <p><b>Hora de cierre:</b>  {{hor.hora_cierre}}</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Tarifas</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngFor="let tar of tarifas">
+
+        <h4>Tarifa {{tar.nombre}}</h4>
+        <p><b>Periodo:</b>  {{tar.nombre_periodo}}</p>
+        <p><b>Precio niño:</b>  {{tar.precio_menor}}</p>
+        <p><b>Precio adulto:</b>  {{tar.precio_adulto}}</p>
+        <br>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card-title style="padding-left: 30px;" > Vistas del lugar</ion-card-title>
+    <ion-segment [scrollable]="true" value="heart">
+      
+      <ion-segment-button *ngFor="let img of imagenes">
+        <ion-card>
+          <div style=" height: 250px; width: 350px;background-color: black;">
+            <img [src]="img.path" [alt]="img.descripcion" height="100%" >
+          </div>
+          <ion-card-header>
+            <ion-card-subtitle>{{img.descripcion}}</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-segment-button>
+    </ion-segment>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Comentarios <ion-icon name="add-circle-sharp" size="midium" (click)="abrirFormUsuario('')"></ion-icon></ion-card-subtitle>
+        
+      </ion-card-header>
+      <ion-card-content>
+        <ion-card *ngFor="let com of comentarios" (click)="presentActionSheet(com)">
+          <ion-card-header>
+            <ion-card-subtitle>{{com.nombre_usuario}}</ion-card-subtitle>
+          </ion-card-header>
+        
+          <ion-card-content>
+            {{com.comentario}}
+          </ion-card-content>
+        </ion-card>
+      </ion-card-content>
+    </ion-card>
+
+
+</ion-content>

@@ -1,0 +1,13 @@
+<app-header titulo="Favoritos">
+</app-header>
+<ion-content>
+  <ion-list>
+    <div *ngFor="let lug of lista">
+      <app-card-lugar [lugar]="lug" (click)="cargarLugar(lug)">
+
+      </app-card-lugar>
+      <br>
+    </div>
+
+  </ion-list>
+</ion-content>

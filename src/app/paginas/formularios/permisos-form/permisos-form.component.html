@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{titulo}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding: 20px; display: flex; flex-direction: column;">
+
+    <label>Nombre Completo</label>
+    <ion-input [(ngModel)]="itemData.nombre"></ion-input>
+
+  </div>
+  <div style="display: flex;justify-content: center;">
+    <ion-button (click)="saveItem()" fill="outline">Guardar</ion-button>
+    <ion-button (click)="cancel()" fill="outline" color="danger">Cancelar</ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,46 @@
+<app-header titulo=" Realizar Busqueda">
+</app-header>
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <br>
+      <ion-searchbar animated="true" placeholder="Animated" [(ngModel)]="valor" (ngModelChange)="buscarTexto()"></ion-searchbar>
+      <div style="display: flex; align-items: center; justify-content: space-around;">
+        <div>
+          <div style="display: flex; align-items: center;">
+            <label for="">Provincia:</label>
+            <ion-icon name="search-circle" size="large" (click)="buscarProvincia()"></ion-icon>
+          </div>
+          <ion-select [(ngModel)]="provincia">
+            <ion-select-option *ngFor="let p of provincias">
+              {{p}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+        <br>
+        <div>
+          <div style="display: flex; align-items: center;">
+            <label for="">Ciudad:</label>
+            <ion-icon name="search-circle" size="large" (click)="buscarCiudad()"></ion-icon>
+          </div>
+          <ion-select [(ngModel)]="ciudad">
+            <ion-select-option *ngFor="let c of ciudades">
+              {{c}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <div *ngFor="let lug of lista">
+        <app-card-lugar [lugar]="lug" (click)="cargarLugar(lug)">
+  
+        </app-card-lugar>
+        <br>
+      </div>
+  
+    </ion-list>
+  </ion-content>
+</ion-content>
